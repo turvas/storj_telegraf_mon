@@ -24,5 +24,10 @@ While in folder, wher docker-compose.yml is located
 
  `docker-compose up`
  
-Access your dashbord:
- 'http://localhost:3000'
+Access your grafana http://localhost:3000 and perform following tasks:
+ 
+ 
+- add Dats Source of type InfluxDB, with following parameters:
+  - URL: http://influxdb:8086 
+  - Database: StorJ
+- import Dashbord #10554 (from https://grafana.com/grafana/dashboards/10554)
