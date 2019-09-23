@@ -10,8 +10,9 @@
 
 # du is too slow (>30s) for SNO data folder over a terra byte. (JSON output)
 #du -ks "$@" | awk '{if (NR!=1) {printf ",\n"};printf "  { \"directory_size_kilobytes\": "$1", \"path\": \""$2"\" }";}'
-
+# on Windows host system du have to be used, as df takes full underlying disk
+SIZE=$(du -ks "$@" | awk '{print $1}')
 # Workaround, get the size of the whole mount point (disk)
 # TODO: find a faster way to get the folder size
-SIZE=$(df "$@" | awk '{if (NR==2) {print $3;}}')
+#SIZE=$(df "$@" | awk '{if (NR==2) {print $3;}}')
 echo -n StorJHealth,host=$HOSTNAME,path=\""$@"\" directory_size_kilobytes=$SIZE "$(date +'%s%N')"
