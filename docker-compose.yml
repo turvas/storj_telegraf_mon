@@ -7,7 +7,9 @@
 # Grafana
 # Visualizes Data
 grafana:
-  image: grafana/grafana:latest
+  #image: grafana/grafana:latest
+  image: grafana-plugin
+  user: root
   container_name: grafana
   ports:
     - "3000:3000"
@@ -28,7 +30,9 @@ grafana:
     # Data persistency
     # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
     # Source:Container
-    - /srv/docker/grafana/data:/var/lib/grafana
+    # - /srv/docker/grafana/data:/var/lib/grafana
+    - h:/storj/grafana:/var/lib/grafana
+    - h:/storj/grafana/dashboards:/var/lib/grafana/dashboards
 
 # InfluxDB
 # Stores Data
@@ -47,12 +51,13 @@ influxdb:
     # Data persistency
     # sudo mkdir -p /srv/docker/influxdb/data
     # Source:container
-    - /srv/docker/influxdb/data:/var/lib/influxdb
+    #- /srv/docker/influxdb/data:/var/lib/influxdb
+    - h:/storj/influxdb/data:/var/lib/influxdb
 
 # Telegraf
 # Gathers data
 telegraf:
-  image: telegraf:latest
+  image: telegraf-docker:latest
   container_name: telegraf
   links:
     - influxdb
@@ -73,11 +78,12 @@ telegraf:
     - ./folder_size.sh:/etc/telegraf/folder_size.sh:ro
     - ./tokens.sh:/etc/telegraf/tokens.sh:ro
     #Import Storj Shared Dir
-    - /mnt/iscsi/StorjV3:/mnt/storjshare:ro
+    #- /mnt/iscsi/StorjV3:/mnt/storjshare:ro
+    - h:/storj:/mnt/storjshare:ro
     #Import host docker
     - /var/run/docker.sock:/var/run/docker.sock:ro
-    - /usr/bin/docker:/usr/bin/docker:ro
+    #- /usr/bin/docker:/usr/bin/docker:ro
     #Import Host proc
-    - /proc:/host/proc:ro
+    #- /proc:/host/proc:ro
     #/sys:/host/sys:ro
   privileged: true
