@@ -18,7 +18,7 @@ For generic instructions please look on form fork "master": https://github.com/g
 - update docker-compose.yml to match your paths (mine are h:/storj)
 - add your crypto token info as described in "master" to tokens.sh
 - install telegraf on your (Windows) host , as sescribed in section "B: Installing Telegraf: in https://thenewstack.io/monitoring-windows-services-with-grafana-influxdb-%E2%80%8Eand-telegraf/
-  - set in telegraf.con section [[outputs.influxdb]] to 
+  - set in telegraf.conf section [[outputs.influxdb]] to 
     - urls = ["http://127.0.0.1:8086"]
 
 ## Start monitoring stack
