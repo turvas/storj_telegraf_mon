@@ -25,7 +25,7 @@ For generic instructions please look on form fork "master": https://github.com/g
       - change "commands", most notably path to 3 .sh scripts execution, for example (assuming, you installed this in folder C:\cygwin64\opt\): 
         `commands = ['C:\cygwin64\bin\mintty /bin/bash -c "PATH=/usr/bin:$PATH; /opt/storj_telegraf_mon/successrate.sh"']`
       - folder mapping, where your STORJ data directory is for folder_size.sh script argument, for example (assuming h:/storj here):
-      `commands = ['C:\cygwin64\bin\mintty /bin/bash -c "PATH=/usr/bin:$PATH; /opt/storj_telegraf_mon/folder_size.sh /cygdrive/h/storj`
+      `commands = ['C:\cygwin64\bin\mintty /bin/bash -c "PATH=/usr/bin:$PATH; /opt/storj_telegraf_mon/folder_size.sh /cygdrive/h/storj"']`
 
 ## Start monitoring stack
 
