@@ -21,7 +21,8 @@ For generic instructions please look on form fork "master": https://github.com/g
   - set in C:\Program Files\Telegraf\telegraf.conf 
     - section [[outputs.influxdb]] to 
       - urls = ["http://127.0.0.1:8086"]
-    - you could also move [[inputs.exec]] section from docker based telegraf.conf to this host based telegraf config and remove docker/telegraf entirely
+    - if you have cygwin installed you could also move content of [[inputs.exec]] section from docker based telegraf.conf to this host based telegraf config and remove docker/telegraf entirely
+      - you have to change "commands", most notably path to 3 .sh scripts, and folder mapping, where your STORJ data directory is for folder_size.sh script argument, for example /cygdrive/h/storj
 
 ## Start monitoring stack
 
