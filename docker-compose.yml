@@ -77,6 +77,7 @@ telegraf:
     - ./successrate.sh:/etc/telegraf/successrate.sh:ro
     - ./folder_size.sh:/etc/telegraf/folder_size.sh:ro
     - ./tokens.sh:/etc/telegraf/tokens.sh:ro
+    - ./dashboard-api.sh:/etc/telegraf/dashboard-api.sh:ro
     #Import Storj Shared Dir
     #- /mnt/iscsi/StorjV3:/mnt/storjshare:ro
     - h:/storj:/mnt/storjshare:ro
