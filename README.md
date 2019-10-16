@@ -1,5 +1,5 @@
 # storj_telegraf_mon
-Success Rates output using StorJ logs with telegraf [inputs.exec] to InfluxDB format. (fork for Windows based dockerhost and TIG stack in docker)
+Success Rates output using StorJ logs and dashboard API with telegraf [inputs.exec] to InfluxDB format. (fork for Windows based dockerhost and TIG stack in docker)
 
 <img src="https://raw.githubusercontent.com/gsxryan/storj_telegraf_mon/master/Dashboard/Preview.png"/>
 
