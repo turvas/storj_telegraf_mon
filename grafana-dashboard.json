@@ -93,7 +93,7 @@
   "gnetId": 10554,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1571169431556,
+  "iteration": 1571343006352,
   "links": [],
   "panels": [
     {
@@ -2542,6 +2542,7 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
+      "decimals": 2,
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -2619,7 +2620,7 @@
             [
               {
                 "params": [
-                  "uptime_format"
+                  "uptime_hr"
                 ],
                 "type": "field"
               },
@@ -2629,13 +2630,7 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$HOST$/"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": "",
@@ -3059,8 +3054,6 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_INFLUXDB}",
-      "description": "queried over sroagenode dashboard API",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -3069,33 +3062,48 @@
         "x": 0,
         "y": 15
       },
-      "id": 63,
+      "id": 40,
       "legend": {
+        "alignAsTable": false,
         "avg": false,
-        "current": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
         "max": false,
         "min": false,
+        "rightSide": false,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "nullPointMode": "null",
+      "links": [],
+      "nullPointMode": "connected",
       "options": {
         "dataLinks": []
       },
       "percentage": false,
-      "pointradius": 2,
-      "points": false,
+      "pointradius": 0.5,
+      "points": true,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "€",
+          "color": "#1F60C4"
+        },
+        {
+          "alias": "$",
+          "color": "#56A64B",
+          "yaxis": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "alias": "Bandwith used",
+          "alias": "€",
           "groupBy": [
             {
               "params": [
@@ -3110,7 +3118,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "StorJHealth",
+          "measurement": "StorJToken",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -3119,20 +3127,20 @@
             [
               {
                 "params": [
-                  "bandwith_used_gb"
+                  "STORJPriceEUR"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "last"
               }
             ]
           ],
           "tags": []
         },
         {
-          "alias": "Disk Used",
+          "alias": "$",
           "groupBy": [
             {
               "params": [
@@ -3147,7 +3155,8 @@
               "type": "fill"
             }
           ],
-          "measurement": "StorJHealth",
+          "hide": false,
+          "measurement": "StorJToken",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
@@ -3156,13 +3165,13 @@
             [
               {
                 "params": [
-                  "disk_used_gb"
+                  "STORJPriceUSD"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "last"
               }
             ]
           ],
@@ -3173,7 +3182,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Storj internal dashbord info",
+      "title": "STORJ Price",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3189,16 +3198,16 @@
       },
       "yaxes": [
         {
-          "format": "short",
-          "label": null,
+          "format": "currencyEUR",
+          "label": "",
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "format": "short",
-          "label": null,
+          "format": "currencyUSD",
+          "label": "",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -3349,6 +3358,19 @@
       }
     },
     {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 45,
+      "panels": [],
+      "title": "Alerts",
+      "type": "row"
+    },
+    {
       "alert": {
         "conditions": [
           {
@@ -3403,7 +3425,7 @@
         "h": 2,
         "w": 4,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 47,
       "legend": {
@@ -3574,7 +3596,7 @@
         "h": 2,
         "w": 4,
         "x": 4,
-        "y": 23
+        "y": 24
       },
       "id": 48,
       "legend": {
@@ -3741,7 +3763,7 @@
         "h": 2,
         "w": 4,
         "x": 8,
-        "y": 23
+        "y": 24
       },
       "id": 49,
       "legend": {
@@ -3856,189 +3878,6 @@
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 23
-      },
-      "id": 40,
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 0.5,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "€",
-          "color": "#1F60C4"
-        },
-        {
-          "alias": "$",
-          "color": "#56A64B",
-          "yaxis": 2
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "€",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "StorJToken",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "STORJPriceEUR"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "$",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "hide": false,
-          "measurement": "StorJToken",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "STORJPriceUSD"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "STORJ Price",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "currencyEUR",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "currencyUSD",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 29
-      },
-      "id": 45,
-      "panels": [],
-      "title": "Alerts",
-      "type": "row"
     }
   ],
   "refresh": "5m",
@@ -4103,5 +3942,5 @@
   "timezone": "",
   "title": "Storj V3 Health",
   "uid": "A6a5iHkZx",
-  "version": 23
+  "version": 29
 }
